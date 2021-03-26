@@ -16,12 +16,9 @@ RUN pip install -r /app/requirements.txt
 # Add application to container
 COPY application.py /app/application.py
 
-# Export flask app
-RUN export FLASK_APP=/app/application.py
-
 # Label ports to be used with container
-EXPOSE 5000/tcp
+EXPOSE 5000
 
 # Set entrypoint to our container
-ENTRYPOINT ["flask", "run"]
+ENTRYPOINT ["flask", "run", "--host=0.0.0.0"]
 
